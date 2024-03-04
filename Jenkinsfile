@@ -16,9 +16,11 @@ pipeline{
             }
         }
         stage('Build Image'){
-            steps{       
+            steps{  
+                script {
                 docker.build(DOCKER_IMAGE_TAG, "-f ${DOCKERFILE_PATH} .")
             }
+          }
         }
     }
 }
