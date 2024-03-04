@@ -52,7 +52,7 @@ pipeline{
 	stage ('Cleanup Artifacts') {
            steps {
                script {
-                    sh "docker rmi -a"
+			sh "docker rmi -f $(docker images -aq)"
 
                }
           }
