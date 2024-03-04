@@ -14,11 +14,11 @@ pipeline{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/Su-love/demo-devops']])
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"  
             }
+        }
         stage('Build Image'){
             steps{       
                 docker.build(DOCKER_IMAGE_TAG, "-f ${DOCKERFILE_PATH} .")
             }
         }
-      }
     }
 }
